@@ -510,13 +510,16 @@ public void delivered(String orderId, String username) {
                             new RuntimeException("Delivery Partner Not Found"));
 
     partner.setCompletedOrders(
-            partner.getCompletedOrders() + 1);
+        (partner.getCompletedOrders()==null ? 0 : partner.getCompletedOrders()) + 1
+);
 
-    partner.setPendingEarnings(
-            partner.getPendingEarnings() + 40);
+partner.setPendingEarnings(
+        (partner.getPendingEarnings()==null ? 0 : partner.getPendingEarnings()) + 40
+);
 
-    partner.setTotalEarnings(
-            partner.getTotalEarnings() + 40);
+partner.setTotalEarnings(
+        (partner.getTotalEarnings()==null ? 0 : partner.getTotalEarnings()) + 40
+);
 
     deliveryPartnerRepository.save(partner);
 
@@ -528,6 +531,8 @@ public void delivered(String orderId, String username) {
 
     orderRepository.save(order);
 }
+
+
 @Override
 public List<OrderResponse> getProcessingOrders() {
 

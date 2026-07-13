@@ -23,9 +23,12 @@
         @JoinColumn(name = "user_id")
         private User user;
 
+     @Column(nullable = false)
         private Integer completedOrders = 0;
 
-        private Integer pendingEarnings = 0;
+        @Column(nullable = false)
+        private Double totalEarnings = 0.0;
 
-        private Integer totalEarnings = 0;
+        @Column(nullable = false)
+        private Double pendingEarnings = 0.0;
     }
